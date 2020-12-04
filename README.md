@@ -41,9 +41,27 @@ What to expect:
 ### Installing Pre-requisites 
 (note - '+' sign indiactes command to be executed please copy commands without '+' sign)
 
-#1 SSH (Login) into your Virtual Machine (VM)
+#1 Login to your Virtual Machine (VM)
 
 - Open command promt from the folder where your .pem file is stored
+
+Start --> Type cmd and press enter key. This opens a new command prompt with the text below (the SSO will be different for you)
+```diff
+Microsoft Windows [Version 10.0.18363.1198]
+(c) 2019 Microsoft Corporation. All rights reserved.
+
+C:\Users\326001408>
+```
+
+Change directory to the folder where the .pem file was downloaded. This is usually in the 'Downloads' folder. If you saved it in a different folder, change directory (cd) to that folder.
+```diff
+Microsoft Windows [Version 10.0.18363.1198]
+(c) 2019 Microsoft Corporation. All rights reserved.
+
+C:\Users\326001408>cd Downloads
+
+C:\Users\326001408\Downloads>
+```
 
 - ssh into your VM
 ```diff
