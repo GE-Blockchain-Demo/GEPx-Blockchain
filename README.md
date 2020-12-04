@@ -142,7 +142,7 @@ type :wq!
 #3 Execute install.sh
 
 ```diff
-+ ./insatll.sh
++ ./install.sh
 ```
 While installing promt will ask for inputs. Give 'Y' to all.
 
@@ -192,6 +192,11 @@ Now we are done with prerequisite installation!
 + sudo curl -sSL https://bit.ly/2ysbOFE | bash -s
 ```
 This will install hyperledger fabric including [fabric-samples](https://github.com/hyperledger/fabric-samples) folder which we will use for creating test-network with CA.
+
+### This completes the prerequisite installation setups. See you in the workshop! 
+============================================
+
+
 
 ### Cloning this repository
 
