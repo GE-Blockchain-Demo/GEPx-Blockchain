@@ -31,13 +31,11 @@ During the session, we will:
 
 10. Place bids
 
-11. Confirm (reveal) bids
+11. Stop adding new bids to session by closing session
 
-12. Finalize bids
+12. Finalize(Confirm) bids
 
-13. Close Session
-
-14. Run smart contract to settle bids
+13. End Session - Run smart contract to settle bids
 
 The smart contract (chaincode) code is already written and provided to you during the hands-on session.
 
@@ -256,7 +254,7 @@ Output - Enroll node1
 ```diff
 + $ node enrollNode.js org1
 
---> Enrolling the Org1 CA admin
+/--> Enrolling the Org1 CA admin
 Loaded the network configuration located at /opt/go/src/github.com/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/connection-org1.json
 Built a CA Client named ca-org1
 Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockchain/application-javascript/wallet/org1
@@ -267,7 +265,7 @@ Output - Enroll node2
 ```diff
 + $ node enrollNode.js org2
 
---> Enrolling the Org2 CA admin
+/--> Enrolling the Org2 CA admin
 Loaded the network configuration located at /opt/go/src/github.com/fabric-samples/test-network/organizations/peerOrganizations/org2.example.com/connection-org2.json
 Built a CA Client named ca-org2
 Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockchain/application-javascript/wallet/org2
@@ -285,7 +283,7 @@ Output -
 ```diff
 + $ node registerEnrollUser.js org1 adminuser
 
---> Register and enrolling new user
+/--> Register and enrolling new user
 Loaded the network configuration located at /opt/go/src/github.com/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/connection-org1.json
 Built a CA Client named ca-org1
 Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockchain/application-javascript/wallet/org1
@@ -305,11 +303,11 @@ Output -
 Loaded the network configuration located at /opt/go/src/github.com/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/connection-org1.json
 Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockchain/application-javascript/wallet/org1
 
---> Submit Session: Propose a new session
-*** Result: committed
+/--> Submit Session: Propose a new session
+/*** Result: committed
 
---> Evaluate Session: query the session that was just created
-*** Result: Session: {
+/--> Evaluate Session: query the session that was just created
+/*** Result: Session: {
   "admin": "eDUwOTo6Q049YWRtaW51c2VyLE9VPWNsaWVudCtPVT1vcmcxK09VPWRlcGFydG1lbnQxOjpDTj1jYS5vcmcxLmV4YW1wbGUuY29tLE89b3JnMS5leGFtcGxlLmNvbSxMPUR1cmhhbSxTVD1Ob3J0aCBDYXJvbGluYSxDPVVT",
   "organizations": [
     "Org1MSP"
@@ -331,7 +329,7 @@ Output - Register company1 to node1
 ```diff
 + $ node registerEnrollUser.js org1 company1
 
---> Register and enrolling new user
+/--> Register and enrolling new user
 Loaded the network configuration located at /opt/go/src/github.com/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/connection-org1.json
 Built a CA Client named ca-org1
 Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockchain/application-javascript/wallet/org1
@@ -342,7 +340,7 @@ Output - Register company2 to node1
 ```diff
 + $ node registerEnrollUser.js org1 company2
 
---> Register and enrolling new user
+/--> Register and enrolling new user
 Loaded the network configuration located at /opt/go/src/github.com/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/connection-org1.json
 Built a CA Client named ca-org1
 Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockchain/application-javascript/wallet/org1
@@ -353,7 +351,7 @@ Output - Register company3 to node2
 ```diff
 + $ node registerEnrollUser.js org2 company3
 
---> Register and enrolling new user
+/--> Register and enrolling new user
 Loaded the network configuration located at /opt/go/src/github.com/fabric-samples/test-network/organizations/peerOrganizations/org2.example.com/connection-org2.json
 Built a CA Client named ca-org2
 Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockchain/application-javascript/wallet/org2
@@ -364,7 +362,7 @@ Output - Register company4 to node2
 ```diff
 + $ node registerEnrollUser.js org2 company4
 
---> Register and enrolling new user
+/--> Register and enrolling new user
 Loaded the network configuration located at /opt/go/src/github.com/fabric-samples/test-network/organizations/peerOrganizations/org2.example.com/connection-org2.json
 Built a CA Client named ca-org2
 Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockchain/application-javascript/wallet/org2
@@ -390,14 +388,14 @@ Output - Create bid for company1
 Loaded the network configuration located at /opt/go/src/github.com/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/connection-org1.json
 Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockchain/application-javascript/wallet/org1
 
---> Evaluate Transaction: get your client ID
-*** Result:  Bidder ID is eDUwOTo6Q049Y29tcGFueTEsT1U9Y2xpZW50K09VPW9yZzErT1U9ZGVwYXJ0bWVudDE6OkNOPWNhLm9yZzEuZXhhbXBsZS5jb20sTz1vcmcxLmV4YW1wbGUuY29tLEw9RHVyaGFtLFNUPU5vcnRoIENhcm9saW5hLEM9VVM=
+/--> Evaluate Transaction: get your client ID
+/*** Result:  Bidder ID is eDUwOTo6Q049Y29tcGFueTEsT1U9Y2xpZW50K09VPW9yZzErT1U9ZGVwYXJ0bWVudDE6OkNOPWNhLm9yZzEuZXhhbXBsZS5jb20sTz1vcmcxLmV4YW1wbGUuY29tLEw9RHVyaGFtLFNUPU5vcnRoIENhcm9saW5hLEM9VVM=
 
---> Submit Session: Create the bid that is stored in your organization's private data collection
+/--> Submit Session: Create the bid that is stored in your organization's private data collection
 *** Result: committed
 + *** Result ***SAVE THIS VALUE*** BidID: d10a570fa1e9566afcd956858aadf6e20de67157b4dfbb71b705c537c3535a4a
 
---> Evaluate Session: read the bid that was just created
+/--> Evaluate Session: read the bid that was just created
 *** Result:  Bid: {
   "bidType": "sell",
   "volume": 1000,
@@ -413,12 +411,12 @@ Output - Submit bid for company1
 Loaded the network configuration located at /opt/go/src/github.com/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/connection-org1.json
 Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockchain/application-javascript/wallet/org1
 
---> Evaluate Session: query the session you want to join
+/--> Evaluate Session: query the session you want to join
 
---> Submit Session: add bid to the session
+/--> Submit Session: add bid to the session
 
---> Evaluate Session: query the session to see that our bid was added
-*** Result: session: {
+/--> Evaluate Session: query the session to see that our bid was added
+/*** Result: session: {
   "admin": "eDUwOTo6Q049YWRtaW51c2VyLE9VPWNsaWVudCtPVT1vcmcxK09VPWRlcGFydG1lbnQxOjpDTj1jYS5vcmcxLmV4YW1wbGUuY29tLE89b3JnMS5leGFtcGxlLmNvbSxMPUR1cmhhbSxTVD1Ob3J0aCBDYXJvbGluYSxDPVVT",
   "organizations": [
     "Org1MSP"
@@ -440,15 +438,15 @@ Output - Create bid for company2
 Loaded the network configuration located at /opt/go/src/github.com/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/connection-org1.json
 Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockchain/application-javascript/wallet/org1
 
---> Evaluate Transaction: get your client ID
-*** Result:  Bidder ID is eDUwOTo6Q049Y29tcGFueTIsT1U9Y2xpZW50K09VPW9yZzErT1U9ZGVwYXJ0bWVudDE6OkNOPWNhLm9yZzEuZXhhbXBsZS5jb20sTz1vcmcxLmV4YW1wbGUuY29tLEw9RHVyaGFtLFNUPU5vcnRoIENhcm9saW5hLEM9VVM=
+/--> Evaluate Transaction: get your client ID
+/*** Result:  Bidder ID is eDUwOTo6Q049Y29tcGFueTIsT1U9Y2xpZW50K09VPW9yZzErT1U9ZGVwYXJ0bWVudDE6OkNOPWNhLm9yZzEuZXhhbXBsZS5jb20sTz1vcmcxLmV4YW1wbGUuY29tLEw9RHVyaGFtLFNUPU5vcnRoIENhcm9saW5hLEM9VVM=
 
---> Submit Session: Create the bid that is stored in your organization's private data collection
-*** Result: committed
+/--> Submit Session: Create the bid that is stored in your organization's private data collection
+/*** Result: committed
 + *** Result ***SAVE THIS VALUE*** BidID: 40cd1b51d68a51e849ed8632d14b64526082d5959a195071869a6f02b0fe6d09
 
---> Evaluate Session: read the bid that was just created
-*** Result:  Bid: {
+/--> Evaluate Session: read the bid that was just created
+/*** Result:  Bid: {
   "bidType": "sell",
   "volume": 700,
   "org": "Org1MSP",
@@ -463,12 +461,12 @@ Output - Submit bid for company2
 Loaded the network configuration located at /opt/go/src/github.com/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/connection-org1.json
 Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockchain/application-javascript/wallet/org1
 
---> Evaluate Session: query the session you want to join
+/--> Evaluate Session: query the session you want to join
 
---> Submit Session: add bid to the session
+/--> Submit Session: add bid to the session
 
---> Evaluate Session: query the session to see that our bid was added
-*** Result: session: {
+/--> Evaluate Session: query the session to see that our bid was added
+/*** Result: session: {
   "admin": "eDUwOTo6Q049YWRtaW51c2VyLE9VPWNsaWVudCtPVT1vcmcxK09VPWRlcGFydG1lbnQxOjpDTj1jYS5vcmcxLmV4YW1wbGUuY29tLE89b3JnMS5leGFtcGxlLmNvbSxMPUR1cmhhbSxTVD1Ob3J0aCBDYXJvbGluYSxDPVVT",
   "organizations": [
     "Org1MSP"
@@ -494,15 +492,15 @@ Output - create bid for company3
 Loaded the network configuration located at /opt/go/src/github.com/fabric-samples/test-network/organizations/peerOrganizations/org2.example.com/connection-org2.json
 Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockchain/application-javascript/wallet/org2
 
---> Evaluate Transaction: get your client ID
-*** Result:  Bidder ID is eDUwOTo6Q049Y29tcGFueTMsT1U9Y2xpZW50K09VPW9yZzIrT1U9ZGVwYXJ0bWVudDE6OkNOPWNhLm9yZzIuZXhhbXBsZS5jb20sTz1vcmcyLmV4YW1wbGUuY29tLEw9SHVyc2xleSxTVD1IYW1wc2hpcmUsQz1VSw==
+/--> Evaluate Transaction: get your client ID
+/*** Result:  Bidder ID is eDUwOTo6Q049Y29tcGFueTMsT1U9Y2xpZW50K09VPW9yZzIrT1U9ZGVwYXJ0bWVudDE6OkNOPWNhLm9yZzIuZXhhbXBsZS5jb20sTz1vcmcyLmV4YW1wbGUuY29tLEw9SHVyc2xleSxTVD1IYW1wc2hpcmUsQz1VSw==
 
---> Submit Session: Create the bid that is stored in your organization's private data collection
-*** Result: committed
+/--> Submit Session: Create the bid that is stored in your organization's private data collection
+/*** Result: committed
 + *** Result ***SAVE THIS VALUE*** BidID: aa88a7f7d33232424ac492feb02ae207a15465c674814dc7536ef244cb4ce250
 
---> Evaluate Session: read the bid that was just created
-*** Result:  Bid: {
+/--> Evaluate Session: read the bid that was just created
+/*** Result:  Bid: {
   "bidType": "buy",
   "volume": 600,
   "org": "Org2MSP",
@@ -517,12 +515,12 @@ Output - Submit bid for company3
 Loaded the network configuration located at /opt/go/src/github.com/fabric-samples/test-network/organizations/peerOrganizations/org2.example.com/connection-org2.json
 Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockchain/application-javascript/wallet/org2
 
---> Evaluate Session: query the session you want to join
+/--> Evaluate Session: query the session you want to join
 
---> Submit Session: add bid to the session
+/--> Submit Session: add bid to the session
 
---> Evaluate Session: query the session to see that our bid was added
-*** Result: session: {
+/--> Evaluate Session: query the session to see that our bid was added
+/*** Result: session: {
   "admin": "eDUwOTo6Q049YWRtaW51c2VyLE9VPWNsaWVudCtPVT1vcmcxK09VPWRlcGFydG1lbnQxOjpDTj1jYS5vcmcxLmV4YW1wbGUuY29tLE89b3JnMS5leGFtcGxlLmNvbSxMPUR1cmhhbSxTVD1Ob3J0aCBDYXJvbGluYSxDPVVT",
   "organizations": [
     "Org1MSP",
@@ -553,15 +551,15 @@ Output - create bid for company4
 Loaded the network configuration located at /opt/go/src/github.com/fabric-samples/test-network/organizations/peerOrganizations/org2.example.com/connection-org2.json
 Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockchain/application-javascript/wallet/org2
 
---> Evaluate Transaction: get your client ID
-*** Result:  Bidder ID is eDUwOTo6Q049Y29tcGFueTQsT1U9Y2xpZW50K09VPW9yZzIrT1U9ZGVwYXJ0bWVudDE6OkNOPWNhLm9yZzIuZXhhbXBsZS5jb20sTz1vcmcyLmV4YW1wbGUuY29tLEw9SHVyc2xleSxTVD1IYW1wc2hpcmUsQz1VSw==
+/--> Evaluate Transaction: get your client ID
+/*** Result:  Bidder ID is eDUwOTo6Q049Y29tcGFueTQsT1U9Y2xpZW50K09VPW9yZzIrT1U9ZGVwYXJ0bWVudDE6OkNOPWNhLm9yZzIuZXhhbXBsZS5jb20sTz1vcmcyLmV4YW1wbGUuY29tLEw9SHVyc2xleSxTVD1IYW1wc2hpcmUsQz1VSw==
 
---> Submit Session: Create the bid that is stored in your organization's private data collection
-*** Result: committed
+/--> Submit Session: Create the bid that is stored in your organization's private data collection
+/*** Result: committed
 + *** Result ***SAVE THIS VALUE*** BidID: cee404e3895c7f6e09f622d130e116aeff655f225f7c225a13ac60ba4f24d419
 
---> Evaluate Session: read the bid that was just created
-*** Result:  Bid: {
+/--> Evaluate Session: read the bid that was just created
+/*** Result:  Bid: {
   "bidType": "buy",
   "volume": 700,
   "org": "Org2MSP",
@@ -576,12 +574,12 @@ Output - Submit bid for company4
 Loaded the network configuration located at /opt/go/src/github.com/fabric-samples/test-network/organizations/peerOrganizations/org2.example.com/connection-org2.json
 Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockchain/application-javascript/wallet/org2
 
---> Evaluate Session: query the session you want to join
+/--> Evaluate Session: query the session you want to join
 
---> Submit Session: add bid to the session
+/--> Submit Session: add bid to the session
 
---> Evaluate Session: query the session to see that our bid was added
-*** Result: session: {
+/--> Evaluate Session: query the session to see that our bid was added
+/*** Result: session: {
   "admin": "eDUwOTo6Q049YWRtaW51c2VyLE9VPWNsaWVudCtPVT1vcmcxK09VPWRlcGFydG1lbnQxOjpDTj1jYS5vcmcxLmV4YW1wbGUuY29tLE89b3JnMS5leGFtcGxlLmNvbSxMPUR1cmhhbSxTVD1Ob3J0aCBDYXJvbGluYSxDPVVT",
   "organizations": [
     "Org1MSP",
@@ -624,11 +622,11 @@ Output -
 Loaded the network configuration located at /opt/go/src/github.com/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/connection-org1.json
 Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockchain/application-javascript/wallet/org1
 
---> Submit Session: close session
-*** Result: committed
+/--> Submit Session: close session
+/*** Result: committed
 
---> Evaluate Session: query the updated session
-*** Result: Session: {
+/--> Evaluate Session: query the updated session
+/*** Result: Session: {
   "admin": "eDUwOTo6Q049YWRtaW51c2VyLE9VPWNsaWVudCtPVT1vcmcxK09VPWRlcGFydG1lbnQxOjpDTj1jYS5vcmcxLmV4YW1wbGUuY29tLE89b3JnMS5leGFtcGxlLmNvbSxMPUR1cmhhbSxTVD1Ob3J0aCBDYXJvbGluYSxDPVVT",
   "organizations": [
     "Org1MSP",
@@ -670,8 +668,8 @@ Output - Finalized bid for company4
 Loaded the network configuration located at /opt/go/src/github.com/fabric-samples/test-network/organizations/peerOrganizations/org2.example.com/connection-org2.json
 Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockchain/application-javascript/wallet/org2
 
---> Evaluate Session: read your bid
-*** Result:  Bid: {
+/--> Evaluate Session: read your bid
+/*** Result:  Bid: {
   "bidType": "buy",
   "volume": 700,
   "org": "Org2MSP",
@@ -679,8 +677,8 @@ Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockch
   "status": "Placed"
 }
 
---> Evaluate Session: query the transaction to see that our bid was added
-*** Result: Session: {
+/--> Evaluate Session: query the transaction to see that our bid was added
+/*** Result: Session: {
   "admin": "eDUwOTo6Q049YWRtaW51c2VyLE9VPWNsaWVudCtPVT1vcmcxK09VPWRlcGFydG1lbnQxOjpDTj1jYS5vcmcxLmV4YW1wbGUuY29tLE89b3JnMS5leGFtcGxlLmNvbSxMPUR1cmhhbSxTVD1Ob3J0aCBDYXJvbGluYSxDPVVT",
   "organizations": [
     "Org1MSP",
@@ -723,7 +721,7 @@ Output - Finalized bid for company3
 Loaded the network configuration located at /opt/go/src/github.com/fabric-samples/test-network/organizations/peerOrganizations/org2.example.com/connection-org2.json
 Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockchain/application-javascript/wallet/org2
 
---> Evaluate Session: read your bid
+/--> Evaluate Session: read your bid
 *** Result:  Bid: {
   "bidType": "buy",
   "volume": 600,
@@ -732,7 +730,7 @@ Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockch
   "status": "Placed"
 }
 
---> Evaluate Session: query the transaction to see that our bid was added
+/--> Evaluate Session: query the transaction to see that our bid was added
 *** Result: Session: {
   "admin": "eDUwOTo6Q049YWRtaW51c2VyLE9VPWNsaWVudCtPVT1vcmcxK09VPWRlcGFydG1lbnQxOjpDTj1jYS5vcmcxLmV4YW1wbGUuY29tLE89b3JnMS5leGFtcGxlLmNvbSxMPUR1cmhhbSxTVD1Ob3J0aCBDYXJvbGluYSxDPVVT",
   "organizations": [
@@ -783,8 +781,8 @@ Output - Finalized bid for company2
 Loaded the network configuration located at /opt/go/src/github.com/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/connection-org1.json
 Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockchain/application-javascript/wallet/org1
 
---> Evaluate Session: read your bid
-*** Result:  Bid: {
+/--> Evaluate Session: read your bid
+/*** Result:  Bid: {
   "bidType": "sell",
   "volume": 700,
   "org": "Org1MSP",
@@ -792,8 +790,8 @@ Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockch
   "status": "Placed"
 }
 
---> Evaluate Session: query the transaction to see that our bid was added
-*** Result: Session: {
+/--> Evaluate Session: query the transaction to see that our bid was added
+/*** Result: Session: {
   "admin": "eDUwOTo6Q049YWRtaW51c2VyLE9VPWNsaWVudCtPVT1vcmcxK09VPWRlcGFydG1lbnQxOjpDTj1jYS5vcmcxLmV4YW1wbGUuY29tLE89b3JnMS5leGFtcGxlLmNvbSxMPUR1cmhhbSxTVD1Ob3J0aCBDYXJvbGluYSxDPVVT",
   "organizations": [
     "Org1MSP",
@@ -850,8 +848,8 @@ Output - Finalized bid for company1
 Loaded the network configuration located at /opt/go/src/github.com/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/connection-org1.json
 Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockchain/application-javascript/wallet/org1
 
---> Evaluate Session: read your bid
-*** Result:  Bid: {
+/--> Evaluate Session: read your bid
+/*** Result:  Bid: {
   "bidType": "sell",
   "volume": 1000,
   "org": "Org1MSP",
@@ -859,8 +857,8 @@ Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockch
   "status": "Placed"
 }
 
---> Evaluate Session: query the transaction to see that our bid was added
-*** Result: Session: {
+/--> Evaluate Session: query the transaction to see that our bid was added
+/*** Result: Session: {
   "admin": "eDUwOTo6Q049YWRtaW51c2VyLE9VPWNsaWVudCtPVT1vcmcxK09VPWRlcGFydG1lbnQxOjpDTj1jYS5vcmcxLmV4YW1wbGUuY29tLE89b3JnMS5leGFtcGxlLmNvbSxMPUR1cmhhbSxTVD1Ob3J0aCBDYXJvbGluYSxDPVVT",
   "organizations": [
     "Org1MSP",
@@ -931,11 +929,11 @@ Output -
 Loaded the network configuration located at /opt/go/src/github.com/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/connection-org1.json
 Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockchain/application-javascript/wallet/org1
 
---> Submit the session to end the session
-*** Result: committed
+/--> Submit the session to end the session
+/*** Result: committed
 
---> Evaluate Session: query the updated session
-*** Result: Session: {
+/--> Evaluate Session: query the updated session
+/*** Result: Session: {
   "admin": "eDUwOTo6Q049YWRtaW51c2VyLE9VPWNsaWVudCtPVT1vcmcxK09VPWRlcGFydG1lbnQxOjpDTj1jYS5vcmcxLmV4YW1wbGUuY29tLE89b3JnMS5leGFtcGxlLmNvbSxMPUR1cmhhbSxTVD1Ob3J0aCBDYXJvbGluYSxDPVVT",
   "organizations": [
     "Org1MSP",
