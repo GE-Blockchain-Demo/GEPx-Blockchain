@@ -18,19 +18,12 @@ During the session, we will:
 
 5. Import use-case specific code 
 6. Start the blockchain network
-
 7. Create 2 nodes (orgs/peers) and a channel
-
 8. Create an admin to start the bidding session
-
 9. Create companies (users) who will place bids
-
 10. Place bids
-
 11. Stop adding new bids to session by closing session
-
 12. Finalize(Confirm) bids
-
 13. End Session - Run smart contract to settle bids
 
 The smart contract (chaincode) code is already written and provided to you during the hands-on session.
@@ -38,9 +31,7 @@ The smart contract (chaincode) code is already written and provided to you durin
 What to expect:
 
 1. This is a technical hands-on session, although instructions are detailed, there is always a chance that something doesnt work.
-
 2. Blockchain is a type of a distributed ledger database. There is no User Interface and pretty screens. Be ready and comfortable with command line interfaces.
-
 3. Try and keep up. There is a lot of work to be done in a short time. The more prepared and attentive you are, the more beneficial the session will be for you.
 
 ### IMPORTANT: The EC2 server on AWS is free for the first 750 hours. Ensure you 'stop' the server when not in use to avoid any costs. 
