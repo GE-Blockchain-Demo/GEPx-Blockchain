@@ -9,16 +9,16 @@ The hands-on activity needs some pre-requisites to be completed. Here are the hi
 
 1. Create a personal AWS free-tier Account
 2. Spin up a linux based EC2 server on AWS
-3. Install pre-requisite technologies such as docker (a container to hold the hyperledger fabric), java and node
-4. Install hyperledger fabric
+3. [Install pre-requisite technologies such as docker (a container to hold the hyperledger fabric), java and node](https://github.com/GE-Blockchain-Demo/GEPx-Blockchain/blob/main/README.md#installing-pre-requisites)
+4. [Install hyperledger fabric](https://github.com/GE-Blockchain-Demo/GEPx-Blockchain/blob/main/README.md#installing-hyperledger-fabric)
 
 ==============
 
 During the session, we will:
 
-5. Import use-case specific code 
-6. Start the blockchain network
-7. Create 2 nodes (orgs/peers) and a channel
+5. [Import use-case specific code](https://github.com/GE-Blockchain-Demo/GEPx-Blockchain/blob/main/README.md#cloning-this-repository)
+6. [Start the blockchain network 
+7. Create 2 nodes (orgs/peers) and a channel](https://github.com/GE-Blockchain-Demo/GEPx-Blockchain/blob/main/README.md#start-the-blockchain-network--create-2-nodes-orgspeers-and-a-channel)
 8. Create an admin to start the bidding session
 9. Create companies (users) who will place bids
 10. Place bids
