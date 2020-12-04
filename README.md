@@ -8,11 +8,8 @@ The use-case is to build the initial part of a platform to host a power exchange
 The hands-on activity needs some pre-requisites to be completed. Here are the high level steps:
 
 1. Create a personal AWS free-tier Account
-
 2. Spin up a linux based EC2 server on AWS
-
 3. Install pre-requisite technologies such as docker (a container to hold the hyperledger fabric), java and node
-
 4. Install hyperledger fabric
 
 ==============
@@ -20,7 +17,6 @@ The hands-on activity needs some pre-requisites to be completed. Here are the hi
 During the session, we will:
 
 5. Import use-case specific code 
-
 6. Start the blockchain network
 
 7. Create 2 nodes (orgs/peers) and a channel
