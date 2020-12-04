@@ -49,18 +49,14 @@ What to expect:
 
 3. Try and keep up. There is a lot of work to be done in a short time. The more prepared and attentive you are, the more beneficial the session will be for you.
 
-### 4. IMPORTANT: The EC2 server on AWS is free for the first 750 hours. Ensure you 'stop' the server when not in use to avoid any costs. 
-
-## Use Case - GE Power Exchange 
-
-- This is simple power exchange model which demonstrates volume based power exchange settlement.
+### IMPORTANT: The EC2 server on AWS is free for the first 750 hours. Ensure you 'stop' the server when not in use to avoid any costs. 
 
 ## Steps to run application
 
 ### Installing Pre-requisites 
 (note - '+' sign indiactes command to be executed please copy commands without '+' sign)
 
-#1 SSH into your VM
+#1 SSH (Login) into your Virtual Machine (VM)
 
 - Open command promt from the folder where your .pem file is stored
 
