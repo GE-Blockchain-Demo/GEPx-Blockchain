@@ -216,6 +216,15 @@ This will install hyperledger fabric including [fabric-samples](https://github.c
 ```
 (Make sure you clone this repository inside fabric-samples!)
 
+## Start the blockchain network & Create 2 nodes (orgs/peers) and a channel
+
+- For out demo we are creating CA authorized network
+- This network will have 2 nodes 
+       - org1.peer0
+       - org2.peer0
+- Both the orgs will come under "mychannel" we are creating with the help of following commands
+- Smart-contract will be deployed on this channel as mentioned below which will initiate our blockchain with genesis block
+
 ### Create channel with CA
 
 #1 Goto test-network directory
@@ -260,6 +269,8 @@ Version: 1.0, Sequence: 1, Endorsement Plugin: escc, Validation Plugin: vscc, Ap
 Query chaincode definition successful on peer0.org2 on channel 'mychannel'
 Chaincode initialization is not required
 ```
+### This completes network creation and smart contract deployment
+================================================================================================
 
 ### Running Application
 
@@ -280,6 +291,14 @@ found 0 vulnerabilities
 
 Now we are ready to run! 
 Follow the steps given below
+
+## Create an admin to start the bidding session & Create companies (users) who will place bids
+
+- From application side we will enroll the nodes we have created above in the network
+- One admin user will be created on org1 for initiating session
+- Any number of companies can be resgistered with our smart-contract as shown bellow 
+- These registered companies can participate in bidding process
+- Example is given for enrolling 4 companies 2 on node1(org1.peer0) and 2 on node2(org2.peer0)
 
 #1 Enroll network nodes
 
@@ -431,6 +450,15 @@ Built a CA Client named ca-org2
 Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockchain/application-javascript/wallet/org2
 Successfully registered and enrolled user company4 and imported it into the wallet
 ```
+### This completes registering Admin and other users along with initiating Session
+====================================================================================
+
+## Place Bids
+
+- Following commands show how to create and submit bids during a session
+- Any company can place any number of bids
+- The exaple provided bellow places 1 bid by 4 companies 2 of them are sell bid whereas 2 are buy bids
+- For submitting bid we need to use BidID generated while bid creation it is highleghted in orange color below
 
 #5 Create and submit bid - This is used to place bid in particular session
 
@@ -702,6 +730,15 @@ Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockch
   "status": "Open"
 }
 ```
+### This completes bid creation 
+================================================================================================================
+
+## Stop adding new bids to session by closing session
+
+- The bidding prosess is allowed only during session time slot
+- Once session time is over new bids cannot be created only we can confirm existing bids
+- Following command shows how session can be stopped by admin user
+- In real scenario this call will be a schedulled call
 
 #6 Close Session - This should be used at end of time slot of session. Once the session is closed no more bidding can be done
 
@@ -753,6 +790,15 @@ Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockch
   "status": "Close"
 }
 ```
+### This completes stop bidding process
+===============================================================================================================
+
+## Finalize(Confirm) bids
+
+- Once the session is stopped each user will get some time window to confirm their bids
+- The confirmed bids will then be revealed in the blockchain
+- For the settlement these bids will be considered
+- A bid can be finalized only by the user who has created it
 
 #7 Finalize Bid - This will finalize the bid placed by companies. Only finalized bids will be considered for approval
 
@@ -1030,6 +1076,14 @@ Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockch
   "status": "Close"
 }
 ```
+### This completes bid confirmation process
+===================================================================================================
+
+## End Session - Run smart contract to settle bids
+
+- This is the final step of our flow
+- It will end the session and give approvals to the bid
+- The bids will be either approved, partially approved or declined depending on the demand and supply
 
 #8 End Session - This will evaluate the bids and provide approval
 
@@ -1110,6 +1164,9 @@ Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockch
 } 
 
 ```
+### This completes out last step!!!
+===============================================================================================================
+
 ### Deleting Database
 
 Once we are done with all execution we can clean up our database using following command
