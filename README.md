@@ -55,6 +55,10 @@ C:\Users\326001408>
 
 Change directory to the folder where the .pem file was downloaded. This is usually in the 'Downloads' folder. If you saved it in a different folder, change directory (cd) to that folder.
 ```diff
++ cd Downloads
+```
+The output will be:
+```diff
 Microsoft Windows [Version 10.0.18363.1198]
 (c) 2019 Microsoft Corporation. All rights reserved.
 
@@ -63,11 +67,34 @@ C:\Users\326001408>cd Downloads
 C:\Users\326001408\Downloads>
 ```
 
-- ssh into your VM
+- Login to your Virtual Machine (EC2 on AWS). Replace the values in the tags <> to your values
 ```diff
 + ssh -i <pemfile>.pem ec2-user@<public-ip>
 ```
+If this doesn't work, ensure your EC2 is in 'Running' state.
+The output will be:
+```diff
+C:\Users\326001408\Downloads>ssh -i ali1.pem ec2-user@65.0.135.36
+The authenticity of host '65.0.135.36 (65.0.135.36)' can't be established.
+ECDSA key fingerprint is SHA256:qVqRRgAHO9ibF29lWuVKCyTdWrspDfqvV/feEY3g61g.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '65.0.135.36' (ECDSA) to the list of known hosts.
+Last login: Thu Dec  3 11:16:18 2020 from 49.37.169.179
 
+       __|  __|_  )
+       _|  (     /   Amazon Linux 2 AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-2/
+Last login: Thu Dec  3 11:16:18 2020 from 49.37.169.179
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux 2 AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-2/
+[ec2-user@ip-172-31-12-219 ~]$
+```
 #1 Create a file install.sh and copy paste following contents to it
 
 Create and open file
