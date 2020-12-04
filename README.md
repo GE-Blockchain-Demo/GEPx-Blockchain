@@ -17,14 +17,16 @@ The hands-on activity needs some pre-requisites to be completed. Here are the hi
 During the session, we will:
 
 5. [Import use-case specific code](https://github.com/GE-Blockchain-Demo/GEPx-Blockchain/blob/main/README.md#cloning-this-repository)
-6. [Start the blockchain network 
-7. Create 2 nodes (orgs/peers) and a channel](https://github.com/GE-Blockchain-Demo/GEPx-Blockchain/blob/main/README.md#start-the-blockchain-network--create-2-nodes-orgspeers-and-a-channel)
+6. Start the blockchain network 
+7. Create 2 nodes (orgs/peers) and a channel
+   [6 & 7](https://github.com/GE-Blockchain-Demo/GEPx-Blockchain/blob/main/README.md#start-the-blockchain-network--create-2-nodes-orgspeers-and-a-channel)
 8. Create an admin to start the bidding session
 9. Create companies (users) who will place bids
-10. Place bids
-11. Stop adding new bids to session by closing session
-12. Finalize(Confirm) bids
-13. End Session - Run smart contract to settle bids
+   [8 & 9](https://github.com/GE-Blockchain-Demo/GEPx-Blockchain/blob/main/README.md#create-an-admin-to-start-the-bidding-session--create-companies-users-who-will-place-bids)
+10. [Place bids](https://github.com/GE-Blockchain-Demo/GEPx-Blockchain/blob/main/README.md#place-bids)
+11. [Stop adding new bids to session by closing session](https://github.com/GE-Blockchain-Demo/GEPx-Blockchain/blob/main/README.md#stop-adding-new-bids-to-session-by-closing-session)
+12. [Finalize(Confirm) bids](https://github.com/GE-Blockchain-Demo/GEPx-Blockchain/blob/main/README.md#finalizeconfirm-bids)
+13. [End Session - Run smart contract to settle bids](https://github.com/GE-Blockchain-Demo/GEPx-Blockchain/blob/main/README.md#end-session---run-smart-contract-to-settle-bids)
 
 The smart contract (chaincode) code is already written and provided to you during the hands-on session.
 
@@ -1165,7 +1167,7 @@ Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockch
 
 ```
 ### This completes out last step!!!
-===============================================================================================================
+================================================================================================
 
 ### Deleting Database
 
