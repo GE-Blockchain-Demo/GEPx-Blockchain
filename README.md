@@ -1,32 +1,54 @@
 # GEPx-Blockchain
 Welcome to the hands-on build for blockchain!
+
 We will build on the most commonly used private, permissioned blockchain platform - Hyperledger Fabric
+
 The use-case is to build the initial part of a platform to host a power exchange - where power can be sold and bought as a commodity by buyers and sellers. We will create a blockchain platform to allow buyers and sellers to place bids and settle them. We will leverage smart contracts to interact with the blockchain. For more functional details around the use-case, please refer to the documentation shared.
 
 The hands-on activity needs some pre-requisites to be completed. Here are the high level steps:
+
 1. Create a personal AWS free-tier Account
+
 2. Spin up a linux based EC2 server on AWS
+
 3. Install pre-requisite technologies such as docker (a container to hold the hyperledger fabric), java and node
+
 4. Install hyperledger fabric
+
 ==============
+
 During the session, we will:
+
 5. Import use-case specific code 
+
 6. Start the blockchain network
+
 7. Create 2 nodes (orgs/peers) and a channel
+
 8. Create an admin to start the bidding session
+
 9. Create companies (users) who will place bids
+
 10. Place bids
+
 11. Confirm (reveal) bids
+
 12. Finalize bids
+
 13. Close Session
+
 14. Run smart contract to settle bids
 
 The smart contract (chaincode) code is already written and provided to you during the hands-on session.
 
 What to expect:
+
 1. This is a technical hands-on session, although instructions are detailed, there is always a chance that something doesnt work.
+
 2. Blockchain is a type of a distributed ledger database. There is no User Interface and pretty screens. Be ready and comfortable with command line interfaces.
+
 3. Try and keep up. There is a lot of work to be done in a short time. The more prepared and attentive you are, the more beneficial the session will be for you.
+
 ### 4. IMPORTANT: The EC2 server on AWS is free for the first 750 hours. Ensure you 'stop' the server when not in use to avoid any costs. 
 
 ## Use Case - GE Power Exchange 
