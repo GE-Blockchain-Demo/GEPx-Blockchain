@@ -392,11 +392,11 @@ Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockch
 /*** Result:  Bidder ID is eDUwOTo6Q049Y29tcGFueTEsT1U9Y2xpZW50K09VPW9yZzErT1U9ZGVwYXJ0bWVudDE6OkNOPWNhLm9yZzEuZXhhbXBsZS5jb20sTz1vcmcxLmV4YW1wbGUuY29tLEw9RHVyaGFtLFNUPU5vcnRoIENhcm9saW5hLEM9VVM=
 
 /--> Submit Session: Create the bid that is stored in your organization's private data collection
-*** Result: committed
+/*** Result: committed
 + *** Result ***SAVE THIS VALUE*** BidID: d10a570fa1e9566afcd956858aadf6e20de67157b4dfbb71b705c537c3535a4a
 
 /--> Evaluate Session: read the bid that was just created
-*** Result:  Bid: {
+/*** Result:  Bid: {
   "bidType": "sell",
   "volume": 1000,
   "org": "Org1MSP",
@@ -722,7 +722,7 @@ Loaded the network configuration located at /opt/go/src/github.com/fabric-sample
 Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockchain/application-javascript/wallet/org2
 
 /--> Evaluate Session: read your bid
-*** Result:  Bid: {
+/*** Result:  Bid: {
   "bidType": "buy",
   "volume": 600,
   "org": "Org2MSP",
@@ -731,7 +731,7 @@ Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockch
 }
 
 /--> Evaluate Session: query the transaction to see that our bid was added
-*** Result: Session: {
+/*** Result: Session: {
   "admin": "eDUwOTo6Q049YWRtaW51c2VyLE9VPWNsaWVudCtPVT1vcmcxK09VPWRlcGFydG1lbnQxOjpDTj1jYS5vcmcxLmV4YW1wbGUuY29tLE89b3JnMS5leGFtcGxlLmNvbSxMPUR1cmhhbSxTVD1Ob3J0aCBDYXJvbGluYSxDPVVT",
   "organizations": [
     "Org1MSP",
