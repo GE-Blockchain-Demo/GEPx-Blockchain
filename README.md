@@ -7,7 +7,7 @@ The use-case is to build the initial part of a platform to host a power exchange
 
 The hands-on activity needs some pre-requisites to be completed. Here are the high level steps:
 
-1. [Create a personal AWS free-tier Account and spin up a linux based EC2 server on AWS](https://ge.box.com/s/3zwzg3ojhxhx1bzeu9hum0alqtdb3lcq)
+1. [Create a personal AWS free-tier Account and spin up a linux based EC2 server on AWS](https://ge.box.com/s/3zwzg3ojhxhx1bzeu9hum0alqtdb3lcq){:target="_blank" rel="noopener"}
 2. [Install pre-requisite technologies such as docker (a container to hold the hyperledger fabric), java and node](https://github.com/GE-Blockchain-Demo/GEPx-Blockchain/blob/main/README.md#installing-pre-requisites)
 3. [Install hyperledger fabric](https://github.com/GE-Blockchain-Demo/GEPx-Blockchain/blob/main/README.md#installing-hyperledger-fabric)
 
