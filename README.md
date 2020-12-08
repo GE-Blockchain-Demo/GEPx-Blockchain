@@ -1172,8 +1172,14 @@ Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockch
 
 Once we are done with all execution we can clean up our database using following command
 
+- Make sure you are in application-javascript folder before you run following command
 ```diff
 + rm -rf wallet
+```
+
+- To check if wallet is actually deleted or not run
+```diff
++ ls -la
 ```
 
 ### Shut down network
@@ -1185,4 +1191,21 @@ Once we are done with all execution we can clean up our database using following
 - Shut down the network
 ```diff
 + ./network.sh down
+```
+
+### Deleting Cloned Repository
+
+- Goto fabric-samples folder
+```diff
++ cd $GOPATH/src/fabric-samples
+```
+
+- Delete the repo
+```diff
++ rm -rf GEPx-Blockchain
+```
+
+- Check if repo is deleted or not
+```diff
++ ls -la
 ```
