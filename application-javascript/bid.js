@@ -48,7 +48,7 @@ async function bid(ccp,wallet,user,orgMSP,sessionID,volume,bidType) {
               bid: tmapData
             });
 
-        let bidID = statefulTxn.getSessionId();
+        let bidID = statefulTxn.getTransactionId();
 
         console.log('\n--> Submit Session: Create the bid that is stored in your organization\'s private data collection');
         await statefulTxn.submit(sessionID);
