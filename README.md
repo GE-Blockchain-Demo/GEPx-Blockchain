@@ -971,7 +971,7 @@ Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockch
       "volume": 1000,
       "org": "Org1MSP",
       "bidder": "eDUwOTo6Q049Y29tcGFueTEsT1U9Y2xpZW50K09VPW9yZzErT1U9ZGVwYXJ0bWVudDE6OkNOPWNhLm9yZzEuZXhhbXBsZS5jb20sTz1vcmcxLmV4YW1wbGUuY29tLEw9RHVyaGFtLFNUPU5vcnRoIENhcm9saW5hLEM9VVM=",
-      "status": "Declined"
+      "status": "Not Approved"
     }
   },
   "status": "ended"
