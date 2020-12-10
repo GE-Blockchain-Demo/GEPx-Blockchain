@@ -438,19 +438,6 @@ Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockch
 Successfully registered and enrolled user company3 and imported it into the wallet
 ```
 
-Example - Register company4 to node2
-```diff
-+ $ node registerEnrollUser.js org2 company4
-```
-
-Output - Register company4 to node2
-```
---> Register and enrolling new user
-Loaded the network configuration located at /opt/go/src/github.com/fabric-samples/test-network/organizations/peerOrganizations/org2.example.com/connection-org2.json
-Built a CA Client named ca-org2
-Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockchain/application-javascript/wallet/org2
-Successfully registered and enrolled user company4 and imported it into the wallet
-```
 ### This completes registering Admin and other users along with initiating Session
 ====================================================================================
 
@@ -661,76 +648,7 @@ Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockch
 }
 ```
 
-Example - create bid for company4
-```diff
-+ $ node bid.js org2 company4 session1 700 buy
-```
 
-Output - create bid for company4
-```diff
-Loaded the network configuration located at /opt/go/src/github.com/fabric-samples/test-network/organizations/peerOrganizations/org2.example.com/connection-org2.json
-Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockchain/application-javascript/wallet/org2
-
-/--> Evaluate Transaction: get your client ID
-/*** Result:  Bidder ID is eDUwOTo6Q049Y29tcGFueTQsT1U9Y2xpZW50K09VPW9yZzIrT1U9ZGVwYXJ0bWVudDE6OkNOPWNhLm9yZzIuZXhhbXBsZS5jb20sTz1vcmcyLmV4YW1wbGUuY29tLEw9SHVyc2xleSxTVD1IYW1wc2hpcmUsQz1VSw==
-
-/--> Submit Session: Create the bid that is stored in your organization's private data collection
-/*** Result: committed
-! *** Result ***SAVE THIS VALUE*** BidID: cee404e3895c7f6e09f622d130e116aeff655f225f7c225a13ac60ba4f24d419
-
-/--> Evaluate Session: read the bid that was just created
-/*** Result:  Bid: {
-  "bidType": "buy",
-  "volume": 700,
-  "org": "Org2MSP",
-  "bidder": "eDUwOTo6Q049Y29tcGFueTQsT1U9Y2xpZW50K09VPW9yZzIrT1U9ZGVwYXJ0bWVudDE6OkNOPWNhLm9yZzIuZXhhbXBsZS5jb20sTz1vcmcyLmV4YW1wbGUuY29tLEw9SHVyc2xleSxTVD1IYW1wc2hpcmUsQz1VSw==",
-  "status": "Placed"
-}
-```
-
-Example - Submit bid for company4
-```diff
-+ $ node submitBid.js org2 company4 session1 cee404e3895c7f6e09f622d130e116aeff655f225f7c225a13ac60ba4f24d419
-```
-
-Output - Submit bid for company4
-```
-Loaded the network configuration located at /opt/go/src/github.com/fabric-samples/test-network/organizations/peerOrganizations/org2.example.com/connection-org2.json
-Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockchain/application-javascript/wallet/org2
-
-/--> Evaluate Session: query the session you want to join
-
-/--> Submit Session: add bid to the session
-
-/--> Evaluate Session: query the session to see that our bid was added
-/*** Result: session: {
-  "admin": "eDUwOTo6Q049YWRtaW51c2VyLE9VPWNsaWVudCtPVT1vcmcxK09VPWRlcGFydG1lbnQxOjpDTj1jYS5vcmcxLmV4YW1wbGUuY29tLE89b3JnMS5leGFtcGxlLmNvbSxMPUR1cmhhbSxTVD1Ob3J0aCBDYXJvbGluYSxDPVVT",
-  "organizations": [
-    "Org1MSP",
-    "Org2MSP"
-  ],
-  "privateBids": {
-    "\u0000bid\u0000session1\u000040cd1b51d68a51e849ed8632d14b64526082d5959a195071869a6f02b0fe6d09\u0000": {
-      "org": "Org1MSP",
-      "hash": "35b51817eceb92b51d57afbce7e010f7fb0e179b8a76660b45389a51fa60bdf7"
-    },
-    "\u0000bid\u0000session1\u0000aa88a7f7d33232424ac492feb02ae207a15465c674814dc7536ef244cb4ce250\u0000": {
-      "org": "Org2MSP",
-      "hash": "0c48debbfbf75582676a4f75ada10f4b2b9965d8d27cd3fff626565e0050fbd8"
-    },
-    "\u0000bid\u0000session1\u0000cee404e3895c7f6e09f622d130e116aeff655f225f7c225a13ac60ba4f24d419\u0000": {
-      "org": "Org2MSP",
-      "hash": "256910148268786cf1e64d1a4468ed7c215d7ea1402ca8d33b2ce6c3cd018a61"
-    },
-    "\u0000bid\u0000session1\u0000d10a570fa1e9566afcd956858aadf6e20de67157b4dfbb71b705c537c3535a4a\u0000": {
-      "org": "Org1MSP",
-      "hash": "08f2f424627a36eb35c0e566e7a79f897a6d015df67bebda2df75dfec3f632f0"
-    }
-  },
-  "finalizedBids": {},
-  "status": "Open"
-}
-```
 ### This completes bid creation 
 ================================================================================================================
 
@@ -781,10 +699,6 @@ Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockch
     "\u0000bid\u0000session1\u0000cee404e3895c7f6e09f622d130e116aeff655f225f7c225a13ac60ba4f24d419\u0000": {
       "org": "Org2MSP",
       "hash": "256910148268786cf1e64d1a4468ed7c215d7ea1402ca8d33b2ce6c3cd018a61"
-    },
-    "\u0000bid\u0000session1\u0000d10a570fa1e9566afcd956858aadf6e20de67157b4dfbb71b705c537c3535a4a\u0000": {
-      "org": "Org1MSP",
-      "hash": "08f2f424627a36eb35c0e566e7a79f897a6d015df67bebda2df75dfec3f632f0"
     }
   },
   "finalizedBids": {},
@@ -806,63 +720,6 @@ Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockch
 Command to run -
 ```diff
 + node finalizeBid.js <node> <comapnyID> <sessionID> <bidID>
-```
-
-Example - Finalized bid for company4
-```diff
-+ $ node finalizeBid.js org2 company4 session1 cee404e3895c7f6e09f622d130e116aeff655f225f7c225a13ac60ba4f24d419
-```
-
-Output - Finalized bid for company4
-```
-Loaded the network configuration located at /opt/go/src/github.com/fabric-samples/test-network/organizations/peerOrganizations/org2.example.com/connection-org2.json
-Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockchain/application-javascript/wallet/org2
-
---> Evaluate Session: read your bid
-*** Result:  Bid: {
-  "bidType": "buy",
-  "volume": 700,
-  "org": "Org2MSP",
-  "bidder": "eDUwOTo6Q049Y29tcGFueTQsT1U9Y2xpZW50K09VPW9yZzIrT1U9ZGVwYXJ0bWVudDE6OkNOPWNhLm9yZzIuZXhhbXBsZS5jb20sTz1vcmcyLmV4YW1wbGUuY29tLEw9SHVyc2xleSxTVD1IYW1wc2hpcmUsQz1VSw==",
-  "status": "Placed"
-}
-
---> Evaluate Session: query the transaction to see that our bid was added
-*** Result: Session: {
-  "admin": "eDUwOTo6Q049YWRtaW51c2VyLE9VPWNsaWVudCtPVT1vcmcxK09VPWRlcGFydG1lbnQxOjpDTj1jYS5vcmcxLmV4YW1wbGUuY29tLE89b3JnMS5leGFtcGxlLmNvbSxMPUR1cmhhbSxTVD1Ob3J0aCBDYXJvbGluYSxDPVVT",
-  "organizations": [
-    "Org1MSP",
-    "Org2MSP"
-  ],
-  "privateBids": {
-    "\u0000bid\u0000session1\u000040cd1b51d68a51e849ed8632d14b64526082d5959a195071869a6f02b0fe6d09\u0000": {
-      "org": "Org1MSP",
-      "hash": "35b51817eceb92b51d57afbce7e010f7fb0e179b8a76660b45389a51fa60bdf7"
-    },
-    "\u0000bid\u0000session1\u0000aa88a7f7d33232424ac492feb02ae207a15465c674814dc7536ef244cb4ce250\u0000": {
-      "org": "Org2MSP",
-      "hash": "0c48debbfbf75582676a4f75ada10f4b2b9965d8d27cd3fff626565e0050fbd8"
-    },
-    "\u0000bid\u0000session1\u0000cee404e3895c7f6e09f622d130e116aeff655f225f7c225a13ac60ba4f24d419\u0000": {
-      "org": "Org2MSP",
-      "hash": "256910148268786cf1e64d1a4468ed7c215d7ea1402ca8d33b2ce6c3cd018a61"
-    },
-    "\u0000bid\u0000session1\u0000d10a570fa1e9566afcd956858aadf6e20de67157b4dfbb71b705c537c3535a4a\u0000": {
-      "org": "Org1MSP",
-      "hash": "08f2f424627a36eb35c0e566e7a79f897a6d015df67bebda2df75dfec3f632f0"
-    }
-  },
-  "finalizedBids": {
-    "\u0000bid\u0000session1\u0000cee404e3895c7f6e09f622d130e116aeff655f225f7c225a13ac60ba4f24d419\u0000": {
-      "bidType": "buy",
-      "volume": 700,
-      "org": "Org2MSP",
-      "bidder": "eDUwOTo6Q049Y29tcGFueTQsT1U9Y2xpZW50K09VPW9yZzIrT1U9ZGVwYXJ0bWVudDE6OkNOPWNhLm9yZzIuZXhhbXBsZS5jb20sTz1vcmcyLmV4YW1wbGUuY29tLEw9SHVyc2xleSxTVD1IYW1wc2hpcmUsQz1VSw==",
-      "status": "Finalized"
-    }
-  },
-  "status": "Close"
-}
 ```
 
 Example - Finalized bid for company3
@@ -903,10 +760,6 @@ Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockch
     "\u0000bid\u0000session1\u0000cee404e3895c7f6e09f622d130e116aeff655f225f7c225a13ac60ba4f24d419\u0000": {
       "org": "Org2MSP",
       "hash": "256910148268786cf1e64d1a4468ed7c215d7ea1402ca8d33b2ce6c3cd018a61"
-    },
-    "\u0000bid\u0000session1\u0000d10a570fa1e9566afcd956858aadf6e20de67157b4dfbb71b705c537c3535a4a\u0000": {
-      "org": "Org1MSP",
-      "hash": "08f2f424627a36eb35c0e566e7a79f897a6d015df67bebda2df75dfec3f632f0"
     }
   },
   "finalizedBids": {
@@ -915,13 +768,6 @@ Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockch
       "volume": 600,
       "org": "Org2MSP",
       "bidder": "eDUwOTo6Q049Y29tcGFueTMsT1U9Y2xpZW50K09VPW9yZzIrT1U9ZGVwYXJ0bWVudDE6OkNOPWNhLm9yZzIuZXhhbXBsZS5jb20sTz1vcmcyLmV4YW1wbGUuY29tLEw9SHVyc2xleSxTVD1IYW1wc2hpcmUsQz1VSw==",
-      "status": "Finalized"
-    },
-    "\u0000bid\u0000session1\u0000cee404e3895c7f6e09f622d130e116aeff655f225f7c225a13ac60ba4f24d419\u0000": {
-      "bidType": "buy",
-      "volume": 700,
-      "org": "Org2MSP",
-      "bidder": "eDUwOTo6Q049Y29tcGFueTQsT1U9Y2xpZW50K09VPW9yZzIrT1U9ZGVwYXJ0bWVudDE6OkNOPWNhLm9yZzIuZXhhbXBsZS5jb20sTz1vcmcyLmV4YW1wbGUuY29tLEw9SHVyc2xleSxTVD1IYW1wc2hpcmUsQz1VSw==",
       "status": "Finalized"
     }
   },
@@ -967,10 +813,6 @@ Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockch
     "\u0000bid\u0000session1\u0000cee404e3895c7f6e09f622d130e116aeff655f225f7c225a13ac60ba4f24d419\u0000": {
       "org": "Org2MSP",
       "hash": "256910148268786cf1e64d1a4468ed7c215d7ea1402ca8d33b2ce6c3cd018a61"
-    },
-    "\u0000bid\u0000session1\u0000d10a570fa1e9566afcd956858aadf6e20de67157b4dfbb71b705c537c3535a4a\u0000": {
-      "org": "Org1MSP",
-      "hash": "08f2f424627a36eb35c0e566e7a79f897a6d015df67bebda2df75dfec3f632f0"
     }
   },
   "finalizedBids": {
@@ -986,13 +828,6 @@ Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockch
       "volume": 600,
       "org": "Org2MSP",
       "bidder": "eDUwOTo6Q049Y29tcGFueTMsT1U9Y2xpZW50K09VPW9yZzIrT1U9ZGVwYXJ0bWVudDE6OkNOPWNhLm9yZzIuZXhhbXBsZS5jb20sTz1vcmcyLmV4YW1wbGUuY29tLEw9SHVyc2xleSxTVD1IYW1wc2hpcmUsQz1VSw==",
-      "status": "Finalized"
-    },
-    "\u0000bid\u0000session1\u0000cee404e3895c7f6e09f622d130e116aeff655f225f7c225a13ac60ba4f24d419\u0000": {
-      "bidType": "buy",
-      "volume": 700,
-      "org": "Org2MSP",
-      "bidder": "eDUwOTo6Q049Y29tcGFueTQsT1U9Y2xpZW50K09VPW9yZzIrT1U9ZGVwYXJ0bWVudDE6OkNOPWNhLm9yZzIuZXhhbXBsZS5jb20sTz1vcmcyLmV4YW1wbGUuY29tLEw9SHVyc2xleSxTVD1IYW1wc2hpcmUsQz1VSw==",
       "status": "Finalized"
     }
   },
@@ -1038,10 +873,6 @@ Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockch
     "\u0000bid\u0000session1\u0000cee404e3895c7f6e09f622d130e116aeff655f225f7c225a13ac60ba4f24d419\u0000": {
       "org": "Org2MSP",
       "hash": "256910148268786cf1e64d1a4468ed7c215d7ea1402ca8d33b2ce6c3cd018a61"
-    },
-    "\u0000bid\u0000session1\u0000d10a570fa1e9566afcd956858aadf6e20de67157b4dfbb71b705c537c3535a4a\u0000": {
-      "org": "Org1MSP",
-      "hash": "08f2f424627a36eb35c0e566e7a79f897a6d015df67bebda2df75dfec3f632f0"
     }
   },
   "finalizedBids": {
@@ -1057,13 +888,6 @@ Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockch
       "volume": 600,
       "org": "Org2MSP",
       "bidder": "eDUwOTo6Q049Y29tcGFueTMsT1U9Y2xpZW50K09VPW9yZzIrT1U9ZGVwYXJ0bWVudDE6OkNOPWNhLm9yZzIuZXhhbXBsZS5jb20sTz1vcmcyLmV4YW1wbGUuY29tLEw9SHVyc2xleSxTVD1IYW1wc2hpcmUsQz1VSw==",
-      "status": "Finalized"
-    },
-    "\u0000bid\u0000session1\u0000cee404e3895c7f6e09f622d130e116aeff655f225f7c225a13ac60ba4f24d419\u0000": {
-      "bidType": "buy",
-      "volume": 700,
-      "org": "Org2MSP",
-      "bidder": "eDUwOTo6Q049Y29tcGFueTQsT1U9Y2xpZW50K09VPW9yZzIrT1U9ZGVwYXJ0bWVudDE6OkNOPWNhLm9yZzIuZXhhbXBsZS5jb20sTz1vcmcyLmV4YW1wbGUuY29tLEw9SHVyc2xleSxTVD1IYW1wc2hpcmUsQz1VSw==",
       "status": "Finalized"
     },
     "\u0000bid\u0000session1\u0000d10a570fa1e9566afcd956858aadf6e20de67157b4dfbb71b705c537c3535a4a\u0000": {
@@ -1125,10 +949,6 @@ Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockch
     "\u0000bid\u0000session1\u0000cee404e3895c7f6e09f622d130e116aeff655f225f7c225a13ac60ba4f24d419\u0000": {
       "org": "Org2MSP",
       "hash": "256910148268786cf1e64d1a4468ed7c215d7ea1402ca8d33b2ce6c3cd018a61"
-    },
-    "\u0000bid\u0000session1\u0000d10a570fa1e9566afcd956858aadf6e20de67157b4dfbb71b705c537c3535a4a\u0000": {
-      "org": "Org1MSP",
-      "hash": "08f2f424627a36eb35c0e566e7a79f897a6d015df67bebda2df75dfec3f632f0"
     }
   },
   "finalizedBids": {
@@ -1137,7 +957,7 @@ Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockch
       "volume": 700,
       "org": "Org1MSP",
       "bidder": "eDUwOTo6Q049Y29tcGFueTIsT1U9Y2xpZW50K09VPW9yZzErT1U9ZGVwYXJ0bWVudDE6OkNOPWNhLm9yZzEuZXhhbXBsZS5jb20sTz1vcmcxLmV4YW1wbGUuY29tLEw9RHVyaGFtLFNUPU5vcnRoIENhcm9saW5hLEM9VVM=",
-      "status": "Approved"
+      "status": "Partially Approved"
     },
     "\u0000bid\u0000session1\u0000aa88a7f7d33232424ac492feb02ae207a15465c674814dc7536ef244cb4ce250\u0000": {
       "bidType": "buy",
@@ -1145,20 +965,13 @@ Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockch
       "org": "Org2MSP",
       "bidder": "eDUwOTo6Q049Y29tcGFueTMsT1U9Y2xpZW50K09VPW9yZzIrT1U9ZGVwYXJ0bWVudDE6OkNOPWNhLm9yZzIuZXhhbXBsZS5jb20sTz1vcmcyLmV4YW1wbGUuY29tLEw9SHVyc2xleSxTVD1IYW1wc2hpcmUsQz1VSw==",
       "status": "Approved"
-    },
-    "\u0000bid\u0000session1\u0000cee404e3895c7f6e09f622d130e116aeff655f225f7c225a13ac60ba4f24d419\u0000": {
-      "bidType": "buy",
-      "volume": 700,
-      "org": "Org2MSP",
-      "bidder": "eDUwOTo6Q049Y29tcGFueTQsT1U9Y2xpZW50K09VPW9yZzIrT1U9ZGVwYXJ0bWVudDE6OkNOPWNhLm9yZzIuZXhhbXBsZS5jb20sTz1vcmcyLmV4YW1wbGUuY29tLEw9SHVyc2xleSxTVD1IYW1wc2hpcmUsQz1VSw==",
-      "status": "Approved"
-    },
+    }
     "\u0000bid\u0000session1\u0000d10a570fa1e9566afcd956858aadf6e20de67157b4dfbb71b705c537c3535a4a\u0000": {
       "bidType": "sell",
       "volume": 1000,
       "org": "Org1MSP",
       "bidder": "eDUwOTo6Q049Y29tcGFueTEsT1U9Y2xpZW50K09VPW9yZzErT1U9ZGVwYXJ0bWVudDE6OkNOPWNhLm9yZzEuZXhhbXBsZS5jb20sTz1vcmcxLmV4YW1wbGUuY29tLEw9RHVyaGFtLFNUPU5vcnRoIENhcm9saW5hLEM9VVM=",
-      "status": "Partially Approved"
+      "status": "Declined"
     }
   },
   "status": "ended"
