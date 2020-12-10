@@ -270,6 +270,25 @@ Version: 1.0, Sequence: 1, Endorsement Plugin: escc, Validation Plugin: vscc, Ap
 Query chaincode definition successful on peer0.org2 on channel 'mychannel'
 Chaincode initialization is not required
 ```
+
+- When network is up and running with smart contract we can see following containers will be spin up by hyperledger fabric which represents
+   -  CA nodes (ca_orderer, ca_org1, ca_org2)
+   -  Network nodes (orderer, org1.peer0, org2.peer0)
+   -  Chaincode/Smart-contract containers
+   
+```
+$ docker ps
+CONTAINER ID        IMAGE                                                                                                                                                                   COMMAND                  CREATED             STATUS              PORTS                              NAMES
+2bdc60d65a33        dev-peer0.org2.example.com-gepx_1.0-36c68e284ec8860cb5f7ec9e18785259d2f4d5d6b58b9f5aa153730cd0de33d3-2b227eb41ef00ee97fffddab5e3c0a5d16b3dde53c8ec16c54bef7ebc9f51045   "chaincode -peer.add…"   17 minutes ago      Up 17 minutes                                          dev-peer0.org2.example.com-gepx_1.0-36c68e284ec8860cb5f7ec9e18785259d2f4d5d6b58b9f5aa153730cd0de33d3
+32f664aee930        dev-peer0.org1.example.com-gepx_1.0-36c68e284ec8860cb5f7ec9e18785259d2f4d5d6b58b9f5aa153730cd0de33d3-6928f2bdeb45a786fc741a7d047a6e7dfaf9ef56e8a3d75ca6bc3488312656b1   "chaincode -peer.add…"   17 minutes ago      Up 17 minutes                                          dev-peer0.org1.example.com-gepx_1.0-36c68e284ec8860cb5f7ec9e18785259d2f4d5d6b58b9f5aa153730cd0de33d3
+ec5766053be0        hyperledger/fabric-peer:latest                                                                                                                                          "peer node start"        19 minutes ago      Up 19 minutes       7051/tcp, 0.0.0.0:9051->9051/tcp   peer0.org2.example.com
+7fc5b2823b3a        hyperledger/fabric-peer:latest                                                                                                                                          "peer node start"        19 minutes ago      Up 19 minutes       0.0.0.0:7051->7051/tcp             peer0.org1.example.com
+94e061282aec        hyperledger/fabric-orderer:latest                                                                                                                                       "orderer"                19 minutes ago      Up 19 minutes       0.0.0.0:7050->7050/tcp             orderer.example.com
+2b695cf7bfc4        hyperledger/fabric-ca:latest                                                                                                                                            "sh -c 'fabric-ca-se…"   19 minutes ago      Up 19 minutes       0.0.0.0:7054->7054/tcp             ca_org1
+b907a43f6a8f        hyperledger/fabric-ca:latest                                                                                                                                            "sh -c 'fabric-ca-se…"   19 minutes ago      Up 19 minutes       7054/tcp, 0.0.0.0:8054->8054/tcp   ca_org2
+91dbecfa597d        hyperledger/fabric-ca:latest                                                                                                                                            "sh -c 'fabric-ca-se…"   19 minutes ago      Up 19 minutes       7054/tcp, 0.0.0.0:9054->9054/tcp   ca_orderer
+```
+
 ### This completes network creation and smart contract deployment
 ================================================================================================
 
@@ -334,6 +353,17 @@ Loaded the network configuration located at /opt/go/src/github.com/fabric-sample
 Built a CA Client named ca-org2
 Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockchain/application-javascript/wallet/org2
 Successfully enrolled admin user and imported it into the wallet
+```
+
+- Enrolling nodes will create a CA store named wallet in application-javascript it can be seen as follows
+
+```
+[ec2-user@ip-172-31-27-83 application-javascript]$ ls -la wallet/ 
+total 0
+drwxrwxr-x 4 ec2-user ec2-user  30 Dec 10 13:43 .
+drwxrwxr-x 4 ec2-user ec2-user 301 Dec 10 13:43 ..
+drwxrwxr-x 2 ec2-user ec2-user  99 Dec 10 13:45 org1
+drwxrwxr-x 2 ec2-user ec2-user  22 Dec 10 13:43 org2
 ```
 
 #2 Register Admin
@@ -436,6 +466,35 @@ Loaded the network configuration located at /opt/go/src/github.com/fabric-sample
 Built a CA Client named ca-org2
 Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockchain/application-javascript/wallet/org2
 Successfully registered and enrolled user company3 and imported it into the wallet
+```
+
+- For each registered company credentials will be generated in our CA store wallet
+
+```
+[ec2-user@ip-172-31-27-83 application-javascript]$ ls -la wallet/org1
+total 20
+drwxrwxr-x 2 ec2-user ec2-user   99 Dec 10 13:45 .
+drwxrwxr-x 4 ec2-user ec2-user   30 Dec 10 13:43 ..
+-rw-rw-r-- 1 ec2-user ec2-user 1101 Dec 10 13:43 admin.id
+-rw-rw-r-- 1 ec2-user ec2-user 1303 Dec 10 13:44 adminuser.id
+-rw-rw-r-- 1 ec2-user ec2-user 1303 Dec 10 13:45 company1.id
+-rw-rw-r-- 1 ec2-user ec2-user 1303 Dec 10 13:45 company2.id
+```
+
+- We can see the credentials for each company. These credentials will be used for further security 
+
+```
+[ec2-user@ip-172-31-27-83 application-javascript]$ cat wallet/org1/company1.id
+{
+   "credentials":
+   {
+      "certificate":"-----BEGIN CERTIFICATE-----\nMIIChTCCAiygAwIBAgIUPhQW2Iwr3ABY/1JbEhyGGIGyQscwCgYIKoZIzj0EAwIw\ncDELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMQ8wDQYDVQQH\nEwZEdXJoYW0xGTAXBgNVBAoTEG9yZzEuZXhhbXBsZS5jb20xHDAaBgNVBAMTE2Nh\nLm9yZzEuZXhhbXBsZS5jb20wHhcNMjAxMjEwMTM0MDAwWhcNMjExMjEwMTM0NTAw\nWjBFMTAwDQYDVQQLEwZjbGllbnQwCwYDVQQLEwRvcmcxMBIGA1UECxMLZGVwYXJ0\nbWVudDExETAPBgNVBAMTCGNvbXBhbnkxMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcD\nQgAEYPppafeG5C18Ye82sd4KXE7RoLl1REvqYjaZjKLGaqdTcae8QSwiaZeagHpR\npGZ6l+UHaFW0pkmmRvx3ndjcKqOBzjCByzAOBgNVHQ8BAf8EBAMCB4AwDAYDVR0T\nAQH/BAIwADAdBgNVHQ4EFgQUWbhyZObke4+Ie9tteyr2RFgvCmgwHwYDVR0jBBgw\nFoAUqD7GC9TJ4iwOgoaZgdEhiXup+4EwawYIKgMEBQYHCAEEX3siYXR0cnMiOnsi\naGYuQWZmaWxpYXRpb24iOiJvcmcxLmRlcGFydG1lbnQxIiwiaGYuRW5yb2xsbWVu\ndElEIjoiY29tcGFueTEiLCJoZi5UeXBlIjoiY2xpZW50In19MAoGCCqGSM49BAMC\nA0cAMEQCICKwy80eEjvA/V1psoLOPBDNXHVv+y3UwsZ7SgDrFzQEAiAG3NOcC1Rb\nXRhYH2R6ZVDSStJaixgvf5Hg6/zs5UTGMg==\n-----END CERTIFICATE-----\n",
+      "privateKey":"-----BEGIN PRIVATE KEY-----\r\nMIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgRTnq2cX+4GA7T+We\r\nmcRatJy4KOB6maj01NIFBumrsguhRANCAARg+mlp94bkLXxh7zax3gpcTtGguXVE\r\nS+piNpmMosZqp1Nxp7xBLCJpl5qAelGkZnqX5QdoVbSmSaZG/Hed2Nwq\r\n-----END PRIVATE KEY-----\r\n"
+   },
+   "mspId":"Org1MSP",
+   "type":"X.509",
+   "version":1
+}
 ```
 
 ### This completes registering Admin and other users along with initiating Session
