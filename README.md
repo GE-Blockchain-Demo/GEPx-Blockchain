@@ -204,9 +204,11 @@ This will install hyperledger fabric including [fabric-samples](https://github.c
 
 
 
-### Cloning this repository
+### Cloning (download) the repository
 
-#1 cd into fabric-sample directory
+This command will copy the pre-written code to the fabric-samples directory on our server 
+
+#1 cd fabric-sample directory
 ```diff
 + cd $GOPATH/src/fabric-samples
 ```
@@ -219,14 +221,13 @@ This will install hyperledger fabric including [fabric-samples](https://github.c
 
 ## Start the blockchain network & Create 2 nodes (orgs/peers) and a channel
 
-- For out demo we are creating CA authorized network
+- For our demo we are creating CA (Certificate Authority) authorized network
 - This network will have 2 nodes 
        - org1.peer0
        - org2.peer0
-- Both the orgs will come under "mychannel" we are creating with the help of following commands
-- Smart-contract will be deployed on this channel as mentioned below which will initiate our blockchain with genesis block
+- Both the orgs will come under "mychannel"
 
-### Create channel with CA
+### Create channel with Certificate Authority
 
 #1 Goto test-network directory
 ```diff
@@ -237,15 +238,17 @@ This will install hyperledger fabric including [fabric-samples](https://github.c
 ```diff
 + ./network.sh up createChannel -ca
 ```
-This will create a channel to which we will add two nodes(org1 and org2) to the network for POC
+This will create a channel to which two nodes(org1 and org2) will be added on the network
 
 ### Deploy Smart-Contract on channel
+
+Smart Contracts are the code that enable each action on the blockchain. Smart Contracts are also called chaincode. Every transaction including creation of users, creation of bids, settlement of bids etc. uses a smart contract to interact with the blockchain.
 
 Make sure you are in test-network directory and run following command
 ```diff
 + ./network.sh deployCC -ccn gepx -ccp ../GEPx-Blockchain/chaincode-go/ -ccep "OR('Org1MSP.peer','Org2MSP.peer')"
 ```
-This will add org1 and org2 to the channel and deploy chaincode named gepx on them. By default it will chreate one peer per org.
+This will add org1 and org2 to the channel and deploy chaincode named gepx on them. By default it will create one peer per org.
 
 Output -
 ```
@@ -271,10 +274,10 @@ Query chaincode definition successful on peer0.org2 on channel 'mychannel'
 Chaincode initialization is not required
 ```
 
-- When network is up and running with smart contract we can see following containers will be spin up by hyperledger fabric which represents
-   -  CA nodes (ca_orderer, ca_org1, ca_org2)
-   -  Network nodes (orderer, org1.peer0, org2.peer0)
-   -  Chaincode/Smart-contract containers
+- When network is up and running with smart contract we can see following containers will be spun up by hyperledger fabric which represents
+   -  CA nodes (ca_orderer, ca_org1, ca_org2) - These nodes enable authentication and authorization to the blockchain
+   -  Network nodes (orderer, org1.peer0, org2.peer0) - These nodes store the distributed ledger. Particpants can choose to have their own nodes, or connect to an existing node
+   -  Chaincode/Smart-contract containers - These hold the code that is replicated to each node and can be reviewed by any participant. However, it cannot be changed by everyone
    
 ```
 $ docker ps
@@ -308,17 +311,21 @@ This should give output as
 ```
 found 0 vulnerabilities
 ```
-
-Now we are ready to run! 
-Follow the steps given below
+----------------
+### Optional Step
+Note: if the output says that some vulnerabilities were found, then execute the below command.
+```
++ npm audit fix
+```
+----------------
 
 ## Create an admin to start the bidding session & Create companies (users) who will place bids
 
 - From application side we will enroll the nodes we have created above in the network
 - One admin user will be created on org1 for initiating session
-- Any number of companies can be resgistered with our smart-contract as shown bellow 
-- These registered companies can participate in bidding process
-- Example is given for enrolling 4 companies 2 on node1(org1.peer0) and 2 on node2(org2.peer0)
+- Any number of companies can be registered with our smart-contract as shown below 
+- These registered companies can participate in the bidding process
+- Example is given for enrolling 3 companies: 2 on node1(org1.peer0) and 1 on node2(org2.peer0)
 
 #1 Enroll network nodes
 
@@ -549,7 +556,7 @@ Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockch
 
 Example - Submit bid for company1
 ```diff
-+ $ node submitBid.js org1 company1 session1 !d10a570fa1e9566afcd956858aadf6e20de67157b4dfbb71b705c537c3535a4a
++ $ node submitBid.js org1 company1 session1 d10a570fa1e9566afcd956858aadf6e20de67157b4dfbb71b705c537c3535a4a
 ```
 
 Output - Submit bid for company1
@@ -769,8 +776,8 @@ Built a file system wallet at /opt/go/src/github.com/fabric-samples/GEPx-Blockch
 
 ## Finalize(Confirm) bids
 
-- Once the session is stopped each user will get some time window to confirm their bids
-- The confirmed bids will then be revealed in the blockchain
+- Once the bidding has stopped, each user gets some time to confirm their bids
+- The confirmed bids will then be revealed in the blockchain except the participant identity - which is hashed
 - For the settlement these bids will be considered
 - A bid can be finalized only by the user who has created it
 
